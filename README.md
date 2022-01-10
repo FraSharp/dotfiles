@@ -1,1 +1,1 @@
-![shell](https://imgur.com/a/MxAi7o2)
+![shell](https://imgur.com/gallery/MxAi7o2)
