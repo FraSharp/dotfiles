@@ -1,5 +1,9 @@
-set term=builtin_ansi
-set term=xterm-256color
+set t_Co=256
+if !has('nvim')
+	set term=builtin_ansi
+	set term=xterm-256color
+endif
+
 filetype plugin indent on
 syntax on
 set number
@@ -8,6 +12,16 @@ filetype off                  " required
 set backspace=indent,eol,start
 set noshowmode
 set laststatus=2
+set ruler
+set wildmenu
+set langmenu=en
+set cmdheight=1
+set foldcolumn=1
+set encoding=utf8
+set ffs=unix,dos,mac
+set wrap
+set nu
+set relativenumber
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
