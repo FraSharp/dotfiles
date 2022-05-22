@@ -80,7 +80,8 @@ function! s:statusline_expr()
 endfunction
 
 let g:lightline = {
-      \ 'colorscheme': 'coffee',
+      \ 'colorscheme': 'one',
+      \ 'background': 'dark',
       \ 'active': {
       \   'left': [ ['mode', 'paste'],
       \             ['fugitive', 'readonly', 'filename', 'modified', 'lineinfo'] ],
