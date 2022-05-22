@@ -37,6 +37,9 @@ bindsym $mod+Shift+f exec $browser
 # open telegram-desktop
 bindsym $mod+Shift+t exec telegram-desktop
 
+# screenshot
+bindsym $mod+Shift+s exec screenshot
+
 # kill focused window
 bindsym $mod+q kill
 
@@ -158,6 +161,7 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
+# resize current window
 bindsym $mod+r mode "resize"
 
 # coffee colorscheme
@@ -193,7 +197,7 @@ bar {
 	tray_output none
 	font pango:JetBrains Mono 10
 	status_command $HOME/Documents/bumblebee-status/bumblebee-status \
-		-m disk:home cpu memory battery date time \
+		-m disk:home cpu memory amixer battery date time \
 		-p home.path=/home time.format="%H:%M:%S" date.format="%a, %d %b %Y" \
 		-t gruvbox
 
@@ -214,4 +218,9 @@ bar {
 
 # disable window borders
 for_window [class="^.*"] border pixel 0
+
+# volume
+bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioRaiseVolume exec amixer set Master unmute 3%+
+bindsym XF86AudioLowerVolume exec amixer set Master unmute 3%-
 
