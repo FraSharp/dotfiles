@@ -2,10 +2,11 @@ set t_Co=256
 filetype plugin indent on
 syntax on
 set number
-set nocompatible
 filetype off
 set backspace=indent,eol,start
 set noshowmode
+set showmatch
+set hlsearch
 set laststatus=2
 set ruler
 set wildmenu
@@ -80,7 +81,7 @@ function! s:statusline_expr()
 endfunction
 
 let g:lightline = {
-      \ 'colorscheme': 'coffee',
+      \ 'colorscheme': 'one',
       \ 'active': {
       \   'left': [ ['mode', 'paste'],
       \             ['fugitive', 'readonly', 'filename', 'modified', 'lineinfo'] ],
@@ -112,6 +113,10 @@ inoremap [ []<left>
 inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
+inoremap jj <Esc>
+nnoremap <F5> :NERDTreeToggle<CR>
 
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+let NERDTreeShowHidden=1
 
