@@ -1,6 +1,9 @@
 # source bash_prompt
 source ~/.bash_prompt;
 
+# source completely
+source completely.bash
+
 # init cargo
 . "${HOME}/.cargo/env"
 
@@ -12,6 +15,8 @@ export PATH="/opt/homebrew/opt/llvm@13/bin:/opt/homebrew/Cellar/llvm/13.0.1_1/bi
 export PATH="/usr/local/bin:${HOME}/.local/bin/:${PATH}"
 export PATH="/opt/homebrew/opt/php@8.2/bin:${PATH}"
 export PATH="/opt/homebrew/opt/php@8.2/sbin:${PATH}"
+export PATH="/opt/homebrew/Cellar/ruby/3.1.2/bin/:${PATH}"
+export PATH="/opt/homebrew/lib/ruby/gems/3.1.0/gems/completely-0.4.2/bin:${PATH}"
 
 # user aliases
 alias arigram="python3 -m arigram"
@@ -23,3 +28,13 @@ alias l="lsd -l"
 if [ ! -f /usr/local/bin/vim ]; then
 	kos ln -s $(which nvim) /usr/local/bin/vim
 fi
+
+# baz
+export BAZ_LOADER_ENABLED=true
+_baz_loader=""$HOME"/.local/share/baz/loader.sh"
+
+[ ! -f "$_baz_loader" ] || source "$_baz_loader"
+
+# append to bash_history
+shopt -s histappend
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
