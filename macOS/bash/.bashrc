@@ -1,9 +1,6 @@
 # source bash_prompt
 source ~/.bash_prompt;
 
-# source completely
-source completely.bash
-
 # init cargo
 . "${HOME}/.cargo/env"
 
@@ -29,12 +26,18 @@ if [ ! -f /usr/local/bin/vim ]; then
 	kos ln -s $(which nvim) /usr/local/bin/vim
 fi
 
-# baz
-export BAZ_LOADER_ENABLED=true
-_baz_loader=""$HOME"/.local/share/baz/loader.sh"
+# bash stuff
+if [[ $(echo $0 | grep "bash") >/dev/null ]]; then
+	# source completely
+	source completely.bash
 
-[ ! -f "$_baz_loader" ] || source "$_baz_loader"
+	# baz
+	export BAZ_LOADER_ENABLED=true
+	_baz_loader=""$HOME"/.local/share/baz/loader.sh"
 
-# append to bash_history
-shopt -s histappend
-PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+	[ ! -f "$_baz_loader" ] || source "$_baz_loader"
+
+	# append to bash_history
+	shopt -s histappend
+	PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+fi
