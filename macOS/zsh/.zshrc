@@ -1,23 +1,39 @@
 # source .bashrc
 source "${HOME}/.bashrc"
 
-# Oh My Zsh path
-export ZSH="/Users/francescoduca/.oh-my-zsh"
+# zsh path
+export ZSH=$HOME/.zsh
 
-# zsh theme
-ZSH_THEME="aub/aub"
+# load compinit
+autoload -Uz compinit
 
-# Uncomment the following line to automatically update without prompting.
-DISABLE_UPDATE_PROMPT="true"
+# plugins
+source $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+fpath=($ZSH/plugins/zsh-completions/src $fpath)
+rm -f ~/.zcompdump; compinit
+# end plugins
 
-# Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=7
+# history
+export HISTFILE=$ZSH/.zsh_history
+export HISTSIZE=20000
+export SAVEHIST=20000
+setopt APPENDHISTORY
+setopt SHAREHISTORY
+setopt INCAPPENDHISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
+# end history
 
-# Oh My Zsh plugins
-plugins=(zsh-autosuggestions)
+# zsh prompt
+PROMPT="ariel @ %1~/ %# "
 
-# source Oh My Zsh
-source ${ZSH}/oh-my-zsh.sh
-
-# You may need to manually set your language environment
+# language
 export LANG=en_US.UTF-8
+
+# pfetch
+export PF_INFO="ascii title os host kernel wm pkgs memory"
+
+# for colors
+export COLORTERM=truecolor
